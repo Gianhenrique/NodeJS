@@ -1,4 +1,5 @@
-const mongoose = require ("mongoose")
+const mongoose = require ("mongoose");
+const mongoosePaginate = require ("mongoose-paginate");//usado pra paginar listas no banco
 
 
 //Criação de model 
@@ -23,5 +24,7 @@ const ProductSchema = mongoose.Schema({
         default: Date.now,
     }
 });
+
+ProductSchema.plugin(mongoosePaginate);
 
 mongoose.model("Product",ProductSchema);

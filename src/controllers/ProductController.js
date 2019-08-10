@@ -4,7 +4,10 @@ const Product = mongoose.model('Product')
 
 module.exports = {
     async index(req, res){
-        const products = await Product.find()
+        //paginação da lista
+        const { page = 1 } = req.query;
+        const products = await Product.paginate({},{page, limit: 10})/*numero de paginas
+        e limite de intens por pagina*/
 
         return res.json(products);
     },
